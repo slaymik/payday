@@ -24,7 +24,7 @@ public class Main {
                 break;
             } else {
                 System.out.println("Ошибка: Возраст должен быть числом. Пожалуйста, введите снова.");
-                scanner.nextLine(); // Очистить буфер ввода
+                scanner.nextLine();
             }
         } while (true);
         System.out.print("Введите национальность: ");
@@ -51,7 +51,7 @@ public class Main {
     }
     private static void playPayDay(Scanner scanner) throws InterruptedException {
         Random random = new Random();
-        while (true) { // Бесконечный цикл для предоставления выбора ограбления снова
+        while (true) {
             System.out.println("Список ограблений:");
             for (int i = 0; i < Robbery.robberies.size(); i++) {
                 System.out.println((i + 1) + ". " + Robbery.robberies.get(i).getName());
@@ -60,7 +60,7 @@ public class Main {
             int robberyChoice = scanner.nextInt();
             if (robberyChoice >= 1 && robberyChoice <= Robbery.robberies.size()) {
                 Robbery selectedRobbery = Robbery.robberies.get(robberyChoice - 1);
-                while (true) { // Бесконечный цикл для предоставления выбора уровня сложности снова
+                while (true) {
                     System.out.println("Выберите уровень сложности:");
                     for (int i = 0; i < Robbery.DifficultyLevel.values().length; i++) {
                         System.out.printf("%d. %s%n", (i + 1), Robbery.DifficultyLevel.values()[i]);
