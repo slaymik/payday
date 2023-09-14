@@ -88,12 +88,13 @@ public class Main {
                             scenario.addAll(Robbery.scenario5);}
                         boolean win = true;
                         int fightTime = 0;
+                        int scenarioSize = 0;
                         for(int k=0;k<scenario.size();k++){
                             String line = scenario.get(k);
                             System.out.println(line);
                             double randomDouble = random.nextDouble();
                             if(randomDouble< selectedRobbery.getPoliceEncounterProbability()){
-                                fightTime = fightTime+7;
+                                fightTime += 7;
                                 boolean result = Cop.fight();
                                 if(!result){
                                     win=false;
@@ -101,9 +102,10 @@ public class Main {
                                     break;
                                 }
                             }
-                            totalDelayTime = fightTime+totalDelayTime+k*5;
                             Thread.sleep(5000);
+                            scenarioSize = k;
                         }
+                        totalDelayTime = fightTime+totalDelayTime+scenarioSize*5;
                         String won = (win)?"Не попался":"Попался";
                         total = (win)?total+ selectedRobbery.getMoney():total;
                         int money = (win)?selectedRobbery.getMoney():0;
