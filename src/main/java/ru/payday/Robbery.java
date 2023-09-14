@@ -58,7 +58,6 @@ public class Robbery {
         this.policeEncounterProbability = generatePoliceEncounterProbability();
     }
     private int generateMoney() {
-        // Генерируем количество денег в зависимости от сложности
         switch (difficultyLevel) {
             case EASY:
                 return new Random().nextInt(20000) + 30000;
@@ -71,7 +70,6 @@ public class Robbery {
         }
     }
     private double generatePoliceEncounterProbability() {
-        // Генерируем случайную вероятность в зависимости от сложности
         double minProbability, maxProbability;
         switch (difficultyLevel) {
             case EASY:
