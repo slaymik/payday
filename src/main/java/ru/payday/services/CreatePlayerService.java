@@ -5,15 +5,9 @@ import ru.payday.model.Person;
 import java.util.Scanner;
 
 public class CreatePlayerService {
-    private static String playerName;
-    private static int playerAge;
-    private static String playerNationality;
-    private static String playerGender;
-    static Person player = new Person();
 
-    public static void createPlayer() {
+    public Person createPlayer(Scanner scanner) {
 
-        Scanner scanner = new Scanner(System.in);
         int age;
         System.out.print("Введите имя: ");
         String name = scanner.nextLine();
@@ -32,17 +26,7 @@ public class CreatePlayerService {
         String nationality = scanner.nextLine();
         System.out.print("Введите пол: ");
         String gender = scanner.nextLine();
-        player = new Person(name, age, nationality, gender);
-        playerName = player.getName();
-        playerAge = player.getAge();
-        playerNationality = player.getNationality();
-        playerGender = player.getGender();
-        System.out.printf("Данные персонажа:%nИмя: %s%nВозраст: %d%nНациональность: %s%nПол: %s%n",
-                playerName, playerAge, playerNationality, playerGender);
-    }
-@Override
-    public String toString() {
-        return String.format("%nИмя: %s%nВозраст: %d%nНациональность: %s%nПол: %s%n",
-                playerName, playerAge, playerNationality, playerGender);
+        Person player = new Person(name, age, nationality, gender);
+        return player;
     }
 }

@@ -2,16 +2,16 @@ package ru.payday.model;
 
 import java.util.Random;
 public class Robbery {
-    private String name = null;
-    private String location = null;
+    private String name;
+    private String location;
     private DifficultyLevel difficultyLevel;
     private int Money;
     private double policeEncounterProbability;
+    private int robberyNumber;
     public Robbery(String name, String location){
         this.name = name;
         this.location = location;
     }
-    public Robbery(){}
 
     public String getName() {
         return name;
@@ -73,5 +73,12 @@ public class Robbery {
                 name, location, difficultyLevel, Money, policeEncounterProbability * 100);
     }
 
+    public int getRobberyNumber() {
+        return robberyNumber;
+    }
+
+    public void setRobberyNumber(int robberyNumber) {
+        this.robberyNumber = robberyNumber;
+    }
 }
 

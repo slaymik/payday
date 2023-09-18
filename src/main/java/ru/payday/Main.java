@@ -1,9 +1,11 @@
 package ru.payday;
-import ru.payday.services.GameLoopService;
+
+import static ru.payday.services.GameLoopService.startGame;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        GameLoopService.gameLoopService();
+        startGame();
         }
     }
 

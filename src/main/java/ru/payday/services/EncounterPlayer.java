@@ -11,37 +11,31 @@ import java.util.Random;
 import static ru.payday.consts.CopParams.*;
 
 public class EncounterPlayer {
-    static double rankProbability;
-    public static void createCop() throws InterruptedException {
-        Thread.sleep(GameConsts.threadSleepTime);
-        Random random = new Random();
-        String randomName = copName.get(random.nextInt(copName.size()));
-        String randomNationality = copNationality.get(random.nextInt(copNationality.size()));
-        String randomGender = copGender.get(random.nextInt(copGender.size()));
-        int randomAge = random.nextInt(ageDelta) +minAge;
+    private Random random;
+    public EncounterPlayer(Random random){
+        this.random = random;
+    }
+    public Cop createCop(){
         List<Double> rankProbabilities = new ArrayList<>(rank.keySet());
-        rankProbability = rankProbabilities.get(random.nextInt(rankProbabilities.size()));
-        String randomRank = rank.get(rankProbability);
-        Cop newCop = new Cop(randomName, randomAge, randomNationality, randomGender,rankProbability);
+        Cop newCop = new Cop(copName.get(random.nextInt(copName.size())), random.nextInt(ageDelta) +minAge, copNationality.get(random.nextInt(copNationality.size())), copGender.get(random.nextInt(copGender.size())),rankProbabilities.get(random.nextInt(rankProbabilities.size())));
         System.out.println("----------------------------------------------------------------");
-        System.out.printf("Вы встретили полицейского!%n%s%nРанг: %s%nВероятность выигрыша: %.2f%%%n%n",newCop,randomRank,(1 - newCop.getLoseProbability()) * 100);
+        System.out.printf("Вы встретили полицейского!%n%s%nРанг: %s%nВероятность выигрыша: %.2f%%%n%n",newCop,rank.get(newCop.getLoseProbability()),(1 - newCop.getLoseProbability()) * 100);
+        return newCop;
 }
-    public static boolean fight() throws InterruptedException {
-        Random random = new Random();
-        Thread.sleep(GameConsts.threadSleepTime);
-        System.out.println("Бой начинается!");
-        System.out.println("Производятся вычисления: ⌛");
-        Thread.sleep(GameConsts.threadSleepTime);
+    public boolean fight(Cop newCop) throws InterruptedException {
+        Thread.sleep(GameConsts.THREAD_SLEEP_TIME);
+        System.out.printf("Бой начинается!%nПроизводятся вычисления: ⌛%n");
+        Thread.sleep(GameConsts.THREAD_SLEEP_TIME);
         double winProbability = random.nextDouble();
         boolean win;
-        int scenario;
-        if (winProbability > rankProbability) {
-            scenario = random.nextInt(Scenarios.scenarioFightsWon.length+1) ;
-            System.out.printf("%s%nВы победили!%n----------------------------------------------------------------%n",Scenarios.scenarioFightsWon[scenario]);
+        int copScenarioIndex;
+        if (winProbability > newCop.getLoseProbability()) {
+            copScenarioIndex = random.nextInt(Scenarios.scenarioFightsWon.length) ;
+            System.out.printf("%s%nВы победили!%n----------------------------------------------------------------%n",Scenarios.scenarioFightsWon[copScenarioIndex]);
             win=true;
         }else{
-            scenario = random.nextInt(Scenarios.scenarioFightsLost.length+1) ;
-            System.out.printf("%s%nВы проиграли!%n----------------------------------------------------------------%n",Scenarios.scenarioFightsLost[scenario]);
+            copScenarioIndex = random.nextInt(Scenarios.scenarioFightsLost.length) ;
+            System.out.printf("%s%nВы проиграли!%n----------------------------------------------------------------%n",Scenarios.scenarioFightsLost[copScenarioIndex]);
             win=false;
         }
         return win;

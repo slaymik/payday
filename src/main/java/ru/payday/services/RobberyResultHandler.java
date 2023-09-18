@@ -1,18 +1,18 @@
 package ru.payday.services;
-import static ru.payday.consts.GameConsts.*;
+import ru.payday.model.Person;
+import ru.payday.model.Robbery;
+
 import static ru.payday.model.Person.robberiesCount;
 import static ru.payday.model.Person.totalReward;
-import static ru.payday.services.GameLoopService.*;
-import static ru.payday.services.RobberyChoiceService.selectedRobbery;
 
 public class RobberyResultHandler {
-    public static void resultOutput(){
-        int totalDuration = fightCount*fightTime+startDuration+scenarioSize*5;
-        String won = (win)?"Не попался":"Попался";
-        totalReward = (win)? totalReward + selectedRobbery.getMoney(): totalReward;
-        robberiesCount = (win)? robberiesCount+1:robberiesCount;
-        int money = (win)?selectedRobbery.getMoney():0;
-        System.out.printf("%nВы закончили миссию!%n%n%s%nУспешность: %s%n%nПродолжительность: %d секунд%n%nНаграда: %d$%n%nСумма всех наград: %d$%n",
-               CreatePlayerService.player, won,totalDuration, money, totalReward);
+    public void resultOutput(Person player, Robbery selectedRobbery, boolean result, long startTime, long endTime){
+        float duration = (endTime - startTime)/1000;
+        String isWon = (result)?"Успех":"Провал";
+        totalReward = (result)? totalReward + selectedRobbery.getMoney(): totalReward;
+        robberiesCount = (result)? robberiesCount+1:robberiesCount;
+        int money = (result)?selectedRobbery.getMoney():0;
+        System.out.printf("%nВы закончили миссию!%n%n%s%nУспешность: %s%n%nПродолжительность: %.2f секунд(ы)%n%nНаграда: %d$%n%nСумма всех наград: %d$%n",
+               player, isWon,duration, money, totalReward);
     }
 }

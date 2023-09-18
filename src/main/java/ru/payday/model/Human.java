@@ -12,7 +12,6 @@ public class Human {
         this.nationality = nationality;
         this.gender = gender;
     }
-    public Human(){}
 
     public String getName() {
         return name;
