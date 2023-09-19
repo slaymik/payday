@@ -1,4 +1,5 @@
 package ru.payday.model;
+import static ru.payday.consts.ModelsTextConsts.ROBBERY_TO_STRING_TEXT;
 public class Robbery {
     private final String name;
     private final String location;
@@ -27,7 +28,7 @@ public class Robbery {
     }
     @Override
     public String toString() {
-        return String.format("НАЗВАНИЕ: %s | ЛОКАЦИЯ: %s | УРОВЕНЬ СЛОЖНОСТИ: %s | НАГРАДА: $%d | ВЕРОЯТНОСТЬ ВСТРЕТИТЬ ПОЛИЦЕЙСКИХ: %.2f%%",
+        return String.format(ROBBERY_TO_STRING_TEXT,
                 name, location, difficultyLevel, money, policeEncounterProbability * 100);
     }
     public int getNumber() {

@@ -2,7 +2,8 @@ package ru.payday.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
+import static ru.payday.consts.CopParams.rank;
+import static ru.payday.consts.EncounterPlayerTextConsts.ENCOUNTERED_COP_DATA;
 import static ru.payday.consts.GameConsts.*;
 import static ru.payday.consts.GameLoopTextConsts.*;
 import static ru.payday.model.Person.robberiesCount;
@@ -15,22 +16,20 @@ import ru.payday.model.Robbery;
 import ru.payday.model.Scenario;
 public class GameLoopService {
     public static void startGame(TextInput input, TextOutput output) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
         output.printf("%s%n%n",WELCUM);
         Thread.sleep(THREAD_SLEEP_TIME);
         CreatePlayerService newPlayer = new CreatePlayerService();
         Person player = newPlayer.createPlayer(input,output);
-        output.printf("%nВаш персонаж:%s",player);
+        output.printf("%n%s",player);
         boolean playAgain = true;
         while (playAgain) {
-            playPayDay(player,input,output);
+            playPayDay(player, input, output);
             output.print(CONTINUE_PROMPT);
-            String playAgainChoice = scanner.next();
-            playAgain = isValidPlayAgainChoice(playAgainChoice);
+                String playAgainChoice = input.nextLine();
+                playAgain = isValidPlayAgainChoice(playAgainChoice);
+            }
+            output.printf(FINAL_RESULTS_MESSAGE, player, robberiesCount, totalReward);
         }
-        output.printf(FINAL_RESULTS_MESSAGE,player, robberiesCount, totalReward);
-        scanner.close();
-    }
     private static boolean isValidPlayAgainChoice(String choice) {
         for (String validAnswer : VALID_YES_ANSWERS) {
             if (choice.equalsIgnoreCase(validAnswer)) {
@@ -53,7 +52,8 @@ public class GameLoopService {
             double randomDouble = random.nextDouble();
             if (randomDouble < selectedRobbery.getPoliceEncounterProbability()) {
                 EncounterPlayer newEncounter = new EncounterPlayer(random);
-                Cop newCop = newEncounter.createCop(output);
+                Cop newCop = newEncounter.createCop();
+                output.printf(ENCOUNTERED_COP_DATA,newCop,rank.get(newCop.getLoseProbability()),(1 - newCop.getLoseProbability()) * 100);
                 result = newEncounter.fight(newCop, output);
                 if (!result) {
                     break;
