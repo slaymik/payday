@@ -1,8 +1,10 @@
 package ru.payday.consts;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 public class CopParams {
     public static final List<String> copName = new ArrayList<>(Arrays.asList(
             "Олег", "Владимир", "Глеб", "Антон", "Санек"

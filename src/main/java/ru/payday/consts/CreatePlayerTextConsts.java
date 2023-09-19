@@ -1,4 +1,5 @@
 package ru.payday.consts;
+
 public class CreatePlayerTextConsts {
     public static final String ENTER_NAME = "Введите имя: ";
     public static final String ENTER_AGE = "Введите возраст: ";

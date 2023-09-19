@@ -1,8 +1,11 @@
 package ru.payday.services;
+
 import ru.payday.io.TextInput;
 import ru.payday.io.TextOutput;
 import ru.payday.model.Person;
+
 import static ru.payday.consts.CreatePlayerTextConsts.*;
+
 public class CreatePlayerService {
     public Person createPlayer(TextInput input, TextOutput output) {
         output.print(ENTER_NAME);

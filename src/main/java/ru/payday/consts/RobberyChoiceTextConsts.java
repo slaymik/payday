@@ -1,4 +1,5 @@
 package ru.payday.consts;
+
 public class RobberyChoiceTextConsts {
     public static final String ROBBERY_LIST_TEXT = "Список ограблений:";
     public static final String ENTER_ROBBERY_NUMBER = "Выберите ограбление (введите номер): ";

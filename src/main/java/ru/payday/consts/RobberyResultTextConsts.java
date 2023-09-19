@@ -1,4 +1,5 @@
 package ru.payday.consts;
+
 public class RobberyResultTextConsts {
     public static final String IS_WON_WON = "Успех";
     public static final String IS_WON_LOST = "Провал";

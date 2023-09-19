@@ -1,4 +1,5 @@
 package ru.payday.consts;
+
 public class ModelsTextConsts {
     public static final String ROBBERY_TO_STRING_TEXT = "НАЗВАНИЕ: %s | ЛОКАЦИЯ: %s | УРОВЕНЬ СЛОЖНОСТИ: %s | НАГРАДА: $%d | ВЕРОЯТНОСТЬ ВСТРЕТИТЬ ПОЛИЦЕЙСКИХ: %.2f%%";
     public static final String PERSON_TO_STRING_TEXT = "Ваш персонаж:%nИмя: %s%nВозраст: %d%nНациональность: %s%nПол: %s%n";

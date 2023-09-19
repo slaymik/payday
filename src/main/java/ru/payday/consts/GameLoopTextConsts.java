@@ -1,4 +1,5 @@
 package ru.payday.consts;
+
 public class GameLoopTextConsts {
     public static final String WELCUM =
             "WELCOME TO THE INTERNATIONAL\n" +
