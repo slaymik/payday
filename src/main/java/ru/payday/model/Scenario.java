@@ -6,7 +6,7 @@ import java.util.List;
 import static ru.payday.consts.Scenarios.scenarioTexts;
 
 public class Scenario {
-    public static List<List<String>> scenarios = new ArrayList<>();
+    public static final List<List<String>> scenarios = new ArrayList<>();
 
     static {
         for (String scenarioText : scenarioTexts) {

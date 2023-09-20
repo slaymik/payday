@@ -23,6 +23,6 @@ public class GameLoopTextConsts {
                     "⣿⣿⣿⣿⣿⡆⠄⢣⣻⣽⣿⣿⣟⣾⡮⡺⡸⠸⣿⣿⣿⣿\n" +
                     "⣿⣿⣿⣿⣿⣷⠄⠄⠄⠄⠄⠄⠄⠄⣷⣄⠂⠜⠸⠻⣿⣿";
     public static final String CONTINUE_PROMPT = "Хотите продолжить игру? (да/нет): ";
-    public static final String FINAL_RESULTS_MESSAGE = "Итоговые данные:%n%sКоличество пройденных ограблений: %d%nОбщее количество заработанных денег: %d%n%nСпасибо за игру!";
+    public static final String FINAL_RESULTS_MESSAGE = "Итоговые данные:%n%sКоличество пройденных ограблений: %d%nОбщее количество заработанных денег: %d$%n%nСпасибо за игру!";
     public static final String[] VALID_YES_ANSWERS = {"Да", "д", "Yes", "YES", "ДА", "yes", "y", "Y"};
 }

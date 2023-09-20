@@ -66,6 +66,7 @@ public class GameLoopService {
             }
         }
         long endTime = System.currentTimeMillis();
+        Thread.sleep(THREAD_SLEEP_TIME);
         RobberyResultHandler newResult = new RobberyResultHandler();
         newResult.resultOutput(output, player, selectedRobbery, result, startTime, endTime);
     }

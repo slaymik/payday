@@ -12,7 +12,7 @@ public class Robbery {
     private double policeEncounterProbability;
     private final List<String> scenario;
 
-    public Robbery(List scenario, String name, String location) {
+    public Robbery(List<String> scenario, String name, String location) {
         this.scenario = scenario;
         this.name = name;
         this.location = location;
